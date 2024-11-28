@@ -1,0 +1,46 @@
+name: MLOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # windows
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run training script
+      run: |
+        python model_training.py
+
+    - name: Save model artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: model-artifacts
+        path: |
+          rf_model.pkl
+          rf_model.joblib
+         
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'geethavani108'
+        git config --global user.email 'geethavani108@gmail.com'
+        git add .
+        git commit -m "Automated model update"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
