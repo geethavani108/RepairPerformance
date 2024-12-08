@@ -2,27 +2,6 @@ Repair Performance Project
 Overview
 This project aims to enhance the performance and efficiency of repair processes by leveraging data analysis, machine learning, and predictive maintenance techniques.
 
-Table of Contents
-Introduction
-
-Features
-
-Installation
-
-Usage
-
-Data
-
-Model Training
-
-Evaluation
-
-Contributing
-
-License
-
-Contact
-
 Introduction
 The Repair Performance project focuses on optimizing repair operations through advanced analytics. It aims to predict equipment failures, minimize downtime, and improve overall maintenance strategies.
 
