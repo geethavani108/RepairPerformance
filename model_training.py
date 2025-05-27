@@ -79,7 +79,11 @@ def log_model(model, X_test, y_test, model_name):
         mlflow.sklearn.log_model(model, model_name)
 
 def train_and_evaluate_models(X_train, X_test, y_train, y_test):
-    rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
+    rf_model = RandomForestRegressor(n_estimators=100, random_state=42,      
+    max_features="sqrt", 
+    max_depth=6, 
+    max_leaf_nodes=6
+)
     rf_model.fit(X_train, y_train)
     log_model(rf_model, X_test, y_test, "RandomForest")
     save_model(rf_model, 'rf_model.pkl', 'rf_model.joblib')
